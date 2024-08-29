@@ -1,25 +1,33 @@
 import streamlit as st
-from transformers import BartForConditionalGeneration, BartTokenizer
+from transformers import pipeline
 
+# Title of the application
+st.title("DistilBERT Text Summarization")
+
+# Description
+st.write("This application summarizes the input text using DistilBERT.")
+
+# Text input from the user
+user_input = st.text_area("Enter the text you want to summarize", height=250)
+
+# Load the summarization pipeline
 @st.cache_resource
-def load_summarization_model():
-    model_name = "facebook/bart-large-cnn"
-    model = BartForConditionalGeneration.from_pretrained(model_name)
-    tokenizer = BartTokenizer.from_pretrained(model_name)
-    return model, tokenizer
+def load_model():
+    summarizer = pipeline("summarization", model="distilbert-base-uncased")
+    return summarizer
 
-model, tokenizer = load_summarization_model()
+summarizer = load_model()
 
-st.title("Text Summarization with BART")
-
-input_text = st.text_area("Enter the text you want to summarize", height=200)
-
+# Button to generate the summary
 if st.button("Summarize"):
-    if input_text.strip():
-        inputs = tokenizer([input_text], max_length=1024, return_tensors='pt')
-        summary_ids = model.generate(inputs['input_ids'], max_length=150, min_length=40, length_penalty=2.0, num_beams=4, early_stopping=True)
-        summary = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
+    if user_input:
+        # Perform summarization
+        summary = summarizer(user_input, max_length=130, min_length=30, do_sample=False)
+        # Display the summary
         st.subheader("Summary")
-        st.write(summary)
+        st.write(summary[0]['summary_text'])
     else:
-        st.error("Please enter some text to summarize.")
+        st.write("Please enter some text to summarize.")
+
+# Footer
+st.write("Developed using Streamlit and Hugging Face Transformers")
