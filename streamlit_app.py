@@ -11,7 +11,6 @@ st.write("This application summarizes the input text using DistilBERT.")
 user_input = st.text_area("Enter the text you want to summarize", height=250)
 
 # Load the summarization pipeline
-@st.cache_resource
 def load_model():
     summarizer = pipeline("summarization", model="distilbert-base-uncased")
     return summarizer
