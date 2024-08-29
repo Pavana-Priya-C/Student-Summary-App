@@ -1,6 +1,6 @@
 import streamlit as st
 from transformers import pipeline
-from summarizer import Summarizer
+from transformers import AutoTokenizer, AutoModelForCausalLM
 import os
 from huggingface_hub import login
 
