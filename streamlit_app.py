@@ -60,7 +60,8 @@ elif option == "Chapter Summary":
                                                     'Chapter 6 - The Making of a Scientist',
                                                     'Chapter 7 - The Necklace',
                                                     'Chapter 8 - Bholi',
-                                                    'Chpater 9 - The Book That Saved the Earth'])
+                                                    'Chpater 9 - The Book That Saved the Earth'],
+                                                    index=None)
     
     if chapter_num == 'Chapter 1 - A Triumph of Surgery':
         tab1,tab2 = st.tabs(['Summary 1', 'Summary 2'])
