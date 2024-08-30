@@ -79,10 +79,7 @@ elif option == "Chapter Summary":
                 file_content2 = file.read()
 
             # Display the file content
-            st.write(file_content2)    
-
-    elif chapter_num==None:
-        st.write('Select the chapter...')      
+            st.write(file_content2)         
 
 
 
