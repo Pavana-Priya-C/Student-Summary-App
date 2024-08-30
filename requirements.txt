@@ -1,4 +1,6 @@
 streamlit
-transformers
-torch
-bert-extractive-summarizer
+pandas
+streamlit_option_menu
+wordcloud
+matplotlib 
+pillow 
