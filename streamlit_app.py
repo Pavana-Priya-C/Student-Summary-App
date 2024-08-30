@@ -68,12 +68,20 @@ elif option == "Chapter Summary":
         with tab1:
             file_path = "data/chap1-t5base.txt"
             with open(file_path, "r") as file:
-                file_content = file.read()
+                file_content1 = file.read()
 
             # Display the file content
-            st.write(file_content)
+            st.write(file_content1)
 
-    else:
+        with tab2:
+            file_path = "data/chap1-gemini.txt"
+            with open(file_path, "r") as file:
+                file_content2 = file.read()
+
+            # Display the file content
+            st.write(file_content2)    
+
+    elif chapter_num==None:
         st.write('Select the chapter...')      
 
 
