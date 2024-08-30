@@ -2,7 +2,8 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 import os
 from PIL import Image
-import nltk
+
+
 # Set the title of the web app
 st.title("Welcome to Future Minds Tutoring")
 
