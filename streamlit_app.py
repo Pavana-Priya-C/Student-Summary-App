@@ -10,8 +10,8 @@ st.title("Welcome to Future Minds Tutoring")
 # Sidebar with navigation options
 with st.sidebar:
     option = option_menu("Menu",
-                        options=["About Us","Chapter Summary", "Key Words"],
-                        icons=['house-fill','search', 'key'])
+                        options=["About Us","Chapter Summary"],
+                        icons=['house-fill','search'])
 
 if option == "About Us":
     # Load and resize the image
@@ -81,6 +81,12 @@ elif option == "Chapter Summary":
             # Display the file content
             st.write(file_content2) 
 
+        st.write('You’ve read the story, now let’s explore the important words that help tell it.')
+        
+        img = Image.open("images/chap1_kw.jpg")
+        # Display the resized image
+        st.image(img, use_column_width=True)     
+
     elif chapter_num == 'Chapter 2 - The Theif\'s Story':
         tab1,tab2 = st.tabs(['Quick Look 1', 'Quick Look 2'])
         with tab1:
@@ -97,7 +103,13 @@ elif option == "Chapter Summary":
                 file_content2 = file.read()
 
             # Display the file content
-            st.write(file_content2)    
+            st.write(file_content2)  
+
+        st.write('You’ve read the story, now let’s explore the important words that help tell it.')
+        
+        img = Image.open("images/chap2_kw.jpg")
+        # Display the resized image
+        st.image(img, use_column_width=True)       
 
     elif chapter_num == 'Chapter 3 - The midnight visitor':
         tab1,tab2 = st.tabs(['Quick Look 1', 'Quick Look 2'])
@@ -115,7 +127,13 @@ elif option == "Chapter Summary":
                 file_content2 = file.read()
 
             # Display the file content
-            st.write(file_content2)    
+            st.write(file_content2)  
+
+        st.write('You’ve read the story, now let’s explore the important words that help tell it.')
+        
+        img = Image.open("images/chap3_kw.jpg")
+        # Display the resized image
+        st.image(img, use_column_width=True)       
 
     elif chapter_num == 'Chapter 4 - A Question of Trust':
         tab1,tab2 = st.tabs(['Quick Look 1', 'Quick Look 2'])
@@ -135,6 +153,12 @@ elif option == "Chapter Summary":
             # Display the file content
             st.write(file_content2)  
 
+        st.write('You’ve read the story, now let’s explore the important words that help tell it.')
+        
+        img = Image.open("images/chap4_kw.jpg")
+        # Display the resized image
+        st.image(img, use_column_width=True)     
+
     elif chapter_num == 'Chapter 5 - Footprints with Feet':
         tab1,tab2 = st.tabs(['Quick Look 1', 'Quick Look 2'])
         with tab1:
@@ -153,6 +177,12 @@ elif option == "Chapter Summary":
             # Display the file content
             st.write(file_content2)  
 
+        st.write('You’ve read the story, now let’s explore the important words that help tell it.')
+        
+        img = Image.open("images/chap5_kw.jpg")
+        # Display the resized image
+        st.image(img, use_column_width=True)             
+
     elif chapter_num == 'Chapter 6 - The Making of a Scientist':
         tab1,tab2 = st.tabs(['Quick Look 1', 'Quick Look 2'])
         with tab1:
@@ -169,7 +199,13 @@ elif option == "Chapter Summary":
                 file_content2 = file.read()
 
             # Display the file content
-            st.write(file_content2)    
+            st.write(file_content2) 
+
+        st.write('You’ve read the story, now let’s explore the important words that help tell it.')
+        
+        img = Image.open("images/chap6_kw.jpg")
+        # Display the resized image
+        st.image(img, use_column_width=True)       
 
     elif chapter_num == 'Chapter 7 - The Necklace':
         tab1,tab2 = st.tabs(['Quick Look 1', 'Quick Look 2'])
@@ -187,7 +223,13 @@ elif option == "Chapter Summary":
                 file_content2 = file.read()
 
             # Display the file content
-            st.write(file_content2)                                               
+            st.write(file_content2)  
+
+        st.write('You’ve read the story, now let’s explore the important words that help tell it.')
+        
+        img = Image.open("images/chap7_kw.jpg")
+        # Display the resized image
+        st.image(img, use_column_width=True)                                                  
 
     elif chapter_num == 'Chapter 8 - Bholi':
         tab1,tab2 = st.tabs(['Quick Look 1', 'Quick Look 2'])
@@ -206,6 +248,11 @@ elif option == "Chapter Summary":
 
             # Display the file content
             st.write(file_content2)  
+        st.write('You’ve read the story, now let’s explore the important words that help tell it.')
+        
+        img = Image.open("images/chap8_kw.jpg")
+        # Display the resized image
+        st.image(img, use_column_width=True)     
 
     elif chapter_num == 'Chpater 9 - The Book That Saved the Earth':
         tab1,tab2 = st.tabs(['Quick Look 1', 'Quick Look 2'])
@@ -228,35 +275,8 @@ elif option == "Chapter Summary":
         st.write('You’ve read the story, now let’s explore the important words that help tell it.')
         
         img = Image.open("images/chap9_kw.jpg")
-    
-        # Specify the desired height
-        desired_height = 250
-        # Calculate the width to maintain the aspect ratio
-        width, height = img.size
-        aspect_ratio = width / height
-        new_width = int(desired_height * aspect_ratio)
-        
-        # Resize the image
-        img = img.resize((new_width, desired_height))
-        
         # Display the resized image
         st.image(img, use_column_width=True)         
-
-elif option == "Key Words":
-    img = Image.open("images/chap1_kw.jpg")
-    
-    # # Specify the desired height
-    # desired_height = 250
-    # # Calculate the width to maintain the aspect ratio
-    # width, height = img.size
-    # aspect_ratio = width / height
-    # new_width = int(desired_height * aspect_ratio)
-    
-    # # Resize the image
-    # img = img.resize((new_width, desired_height))
-    
-    # Display the resized image
-    st.image(img, use_column_width=True)
 
 
 
