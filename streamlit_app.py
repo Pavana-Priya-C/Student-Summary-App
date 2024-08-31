@@ -227,7 +227,7 @@ elif option == "Chapter Summary":
 
         st.write('You’ve read the story, now let’s explore the important words that help tell it.')
         
-        img = Image.open("chap9.jpg")
+        img = Image.open("images/chap9.jpg")
     
         # Specify the desired height
         desired_height = 250
@@ -243,7 +243,7 @@ elif option == "Chapter Summary":
         st.image(img, use_column_width=True)         
 
 elif option == "Key Words":
-    img = Image.open("chap1.jpg")
+    img = Image.open("images/chap1.jpg")
     
     # Specify the desired height
     desired_height = 250
