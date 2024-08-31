@@ -245,15 +245,15 @@ elif option == "Chapter Summary":
 elif option == "Key Words":
     img = Image.open("images/chap1_kw.jpg")
     
-    # Specify the desired height
-    desired_height = 250
-    # Calculate the width to maintain the aspect ratio
-    width, height = img.size
-    aspect_ratio = width / height
-    new_width = int(desired_height * aspect_ratio)
+    # # Specify the desired height
+    # desired_height = 250
+    # # Calculate the width to maintain the aspect ratio
+    # width, height = img.size
+    # aspect_ratio = width / height
+    # new_width = int(desired_height * aspect_ratio)
     
-    # Resize the image
-    img = img.resize((new_width, desired_height))
+    # # Resize the image
+    # img = img.resize((new_width, desired_height))
     
     # Display the resized image
     st.image(img, use_column_width=True)
