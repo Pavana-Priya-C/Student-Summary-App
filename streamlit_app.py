@@ -81,7 +81,7 @@ elif option == "Chapter Summary":
             # Display the file content
             st.write(file_content2) 
 
-        st.write('You’ve read the story, now let’s explore the important words that help tell it.')
+        st.subheader('You’ve read the story, now let’s explore the important words that help tell it.')
         
         img = Image.open("images/chap1_kw.jpg")
         # Display the resized image
