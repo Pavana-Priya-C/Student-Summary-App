@@ -64,7 +64,7 @@ elif option == "Chapter Summary":
                                                     index=None)
     
     if chapter_num == 'Chapter 1 - A Triumph of Surgery':
-        tab1,tab2 = st.tabs(['Summary 1', 'Summary 2'])
+        tab1,tab2 = st.tabs(['Quick Look 1', 'Quick Look 2'])
         with tab1:
             file_path = "data/chap1-t5base.txt"
             with open(file_path, "r") as file:
@@ -79,8 +79,151 @@ elif option == "Chapter Summary":
                 file_content2 = file.read()
 
             # Display the file content
-            st.write(file_content2)         
+            st.write(file_content2) 
 
+    elif chapter_num == 'Chapter 2 - The Theif\'s Story':
+        tab1,tab2 = st.tabs(['Quick Look 1', 'Quick Look 2'])
+        with tab1:
+            file_path = "data/chap2-t5base.txt"
+            with open(file_path, "r") as file:
+                file_content1 = file.read()
+
+            # Display the file content
+            st.write(file_content1)
+
+        with tab2:
+            file_path = "data/chap2-gemini.txt"
+            with open(file_path, "r") as file:
+                file_content2 = file.read()
+
+            # Display the file content
+            st.write(file_content2)    
+
+    elif chapter_num == 'Chapter 3 - The midnight visitor':
+        tab1,tab2 = st.tabs(['Quick Look 1', 'Quick Look 2'])
+        with tab1:
+            file_path = "data/chap3-t5base.txt"
+            with open(file_path, "r") as file:
+                file_content1 = file.read()
+
+            # Display the file content
+            st.write(file_content1)
+
+        with tab2:
+            file_path = "data/chap3-gemini.txt"
+            with open(file_path, "r") as file:
+                file_content2 = file.read()
+
+            # Display the file content
+            st.write(file_content2)    
+
+    elif chapter_num == 'Chapter 4 - A Question of Trust':
+        tab1,tab2 = st.tabs(['Quick Look 1', 'Quick Look 2'])
+        with tab1:
+            file_path = "data/chap4-t5base.txt"
+            with open(file_path, "r") as file:
+                file_content1 = file.read()
+
+            # Display the file content
+            st.write(file_content1)
+
+        with tab2:
+            file_path = "data/chap4-gemini.txt"
+            with open(file_path, "r") as file:
+                file_content2 = file.read()
+
+            # Display the file content
+            st.write(file_content2)  
+
+    elif chapter_num == 'Chapter 5 - Footprints with Feet':
+        tab1,tab2 = st.tabs(['Quick Look 1', 'Quick Look 2'])
+        with tab1:
+            file_path = "data/chap5-t5base.txt"
+            with open(file_path, "r") as file:
+                file_content1 = file.read()
+
+            # Display the file content
+            st.write(file_content1)
+
+        with tab2:
+            file_path = "data/chap5-gemini.txt"
+            with open(file_path, "r") as file:
+                file_content2 = file.read()
+
+            # Display the file content
+            st.write(file_content2)  
+
+    elif chapter_num == 'Chapter 6 - The Making of a Scientist':
+        tab1,tab2 = st.tabs(['Quick Look 1', 'Quick Look 2'])
+        with tab1:
+            file_path = "data/chap6-t5base.txt"
+            with open(file_path, "r") as file:
+                file_content1 = file.read()
+
+            # Display the file content
+            st.write(file_content1)
+
+        with tab2:
+            file_path = "data/chap6-gemini.txt"
+            with open(file_path, "r") as file:
+                file_content2 = file.read()
+
+            # Display the file content
+            st.write(file_content2)    
+
+    elif chapter_num == 'Chapter 7 - The Necklace':
+        tab1,tab2 = st.tabs(['Quick Look 1', 'Quick Look 2'])
+        with tab1:
+            file_path = "data/chap7-t5base.txt"
+            with open(file_path, "r") as file:
+                file_content1 = file.read()
+
+            # Display the file content
+            st.write(file_content1)
+
+        with tab2:
+            file_path = "data/chap7-gemini.txt"
+            with open(file_path, "r") as file:
+                file_content2 = file.read()
+
+            # Display the file content
+            st.write(file_content2)                                               
+
+    elif chapter_num == 'Chapter 8 - Bholi':
+        tab1,tab2 = st.tabs(['Quick Look 1', 'Quick Look 2'])
+        with tab1:
+            file_path = "data/chap8-t5base.txt"
+            with open(file_path, "r") as file:
+                file_content1 = file.read()
+
+            # Display the file content
+            st.write(file_content1)
+
+        with tab2:
+            file_path = "data/chap8-gemini.txt"
+            with open(file_path, "r") as file:
+                file_content2 = file.read()
+
+            # Display the file content
+            st.write(file_content2)  
+
+    elif chapter_num == 'Chpater 9 - The Book That Saved the Earth':
+        tab1,tab2 = st.tabs(['Quick Look 1', 'Quick Look 2'])
+        with tab1:
+            file_path = "data/chap9-t5base.txt"
+            with open(file_path, "r") as file:
+                file_content1 = file.read()
+
+            # Display the file content
+            st.write(file_content1)
+
+        with tab2:
+            file_path = "data/chap9-gemini.txt"
+            with open(file_path, "r") as file:
+                file_content2 = file.read()
+
+            # Display the file content
+            st.write(file_content2)         
 
 
 
