@@ -227,20 +227,20 @@ elif option == "Chapter Summary":
 
         st.write('You’ve read the story, now let’s explore the important words that help tell it.')
         
-        img = Image.open("images/chap9.jpg")
+        img9 = Image.open("images/chap9.jpg")
     
         # Specify the desired height
         desired_height = 250
         # Calculate the width to maintain the aspect ratio
-        width, height = img.size
+        width, height = img9.size
         aspect_ratio = width / height
         new_width = int(desired_height * aspect_ratio)
         
         # Resize the image
-        img = img.resize((new_width, desired_height))
+        img_chap9 = img9.resize((new_width, desired_height))
         
         # Display the resized image
-        st.image(img, use_column_width=True)         
+        st.image(img_chap9, use_column_width=True)         
 
 elif option == "Key Words":
     img = Image.open("images/chap1.jpg")
