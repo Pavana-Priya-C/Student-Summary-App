@@ -82,7 +82,10 @@ elif option == "Chapter Summary":
             st.write(file_content2) 
         
         st.write("")
-        st.subheader('You’ve read the story, now let’s explore the important words that help tell it.')
+        st.write("")
+        st.write("")
+
+        st.subheader('You’ve read the story, now let’s explore the key words.')
         
         img = Image.open("images/chap1_kw.jpg")
         # Display the resized image
@@ -106,8 +109,11 @@ elif option == "Chapter Summary":
             # Display the file content
             st.write(file_content2)  
 
-        st.write('You’ve read the story, now let’s explore the important words that help tell it.')
+        st.write("")
+        st.write("")
+        st.write("")
         
+        st.subheader('You’ve read the story, now let’s explore the key words.')        
         img = Image.open("images/chap2_kw.jpg")
         # Display the resized image
         st.image(img, use_column_width=True)       
@@ -130,8 +136,11 @@ elif option == "Chapter Summary":
             # Display the file content
             st.write(file_content2)  
 
-        st.write('You’ve read the story, now let’s explore the important words that help tell it.')
+        st.write("")
+        st.write("")
+        st.write("")
         
+        st.subheader('You’ve read the story, now let’s explore the key words.')        
         img = Image.open("images/chap3_kw.jpg")
         # Display the resized image
         st.image(img, use_column_width=True)       
@@ -154,7 +163,11 @@ elif option == "Chapter Summary":
             # Display the file content
             st.write(file_content2)  
 
-        st.write('You’ve read the story, now let’s explore the important words that help tell it.')
+        st.write("")
+        st.write("")
+        st.write("")
+        
+        st.subheader('You’ve read the story, now let’s explore the key words.')
         
         img = Image.open("images/chap4_kw.jpg")
         # Display the resized image
@@ -178,7 +191,11 @@ elif option == "Chapter Summary":
             # Display the file content
             st.write(file_content2)  
 
-        st.write('You’ve read the story, now let’s explore the important words that help tell it.')
+        st.write("")
+        st.write("")
+        st.write("")
+        
+        st.subheader('You’ve read the story, now let’s explore the key words.')
         
         img = Image.open("images/chap5_kw.jpg")
         # Display the resized image
@@ -202,7 +219,11 @@ elif option == "Chapter Summary":
             # Display the file content
             st.write(file_content2) 
 
-        st.write('You’ve read the story, now let’s explore the important words that help tell it.')
+        st.write("")
+        st.write("")
+        st.write("")
+        
+        st.subheader('You’ve read the story, now let’s explore the key words.')
         
         img = Image.open("images/chap6_kw.jpg")
         # Display the resized image
@@ -226,7 +247,11 @@ elif option == "Chapter Summary":
             # Display the file content
             st.write(file_content2)  
 
-        st.write('You’ve read the story, now let’s explore the important words that help tell it.')
+        st.write("")
+        st.write("")
+        st.write("")
+        
+        st.subheader('You’ve read the story, now let’s explore the key words.')
         
         img = Image.open("images/chap7_kw.jpg")
         # Display the resized image
@@ -249,7 +274,12 @@ elif option == "Chapter Summary":
 
             # Display the file content
             st.write(file_content2)  
-        st.write('You’ve read the story, now let’s explore the important words that help tell it.')
+        
+        st.write("")
+        st.write("")
+        st.write("")
+        
+        st.subheader('You’ve read the story, now let’s explore the key words.')
         
         img = Image.open("images/chap8_kw.jpg")
         # Display the resized image
@@ -273,7 +303,11 @@ elif option == "Chapter Summary":
             # Display the file content
             st.write(file_content2)    
 
-        st.write('You’ve read the story, now let’s explore the important words that help tell it.')
+        st.write("")
+        st.write("")
+        st.write("")
+        
+        st.subheader('You’ve read the story, now let’s explore the key words.')
         
         img = Image.open("images/chap9_kw.jpg")
         # Display the resized image
@@ -285,5 +319,9 @@ elif option == "Chapter Summary":
 
 
 # Footer
+st.write("")
+st.write("")
+st.write("")
+st.write("")
 st.markdown("***")
 st.write("© 2024 Future Minds Tutoring. All rights reserved.")  
