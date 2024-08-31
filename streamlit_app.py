@@ -10,8 +10,8 @@ st.title("Welcome to Future Minds Tutoring")
 # Sidebar with navigation options
 with st.sidebar:
     option = option_menu("Menu",
-                        options=["About Us","Chapter Summary"],
-                        icons=['house-fill','search'])
+                        options=["About Us","Chapter Summary", "Key Words"],
+                        icons=['house-fill','search', 'key'])
 
 if option == "About Us":
     # Load and resize the image
@@ -223,8 +223,40 @@ elif option == "Chapter Summary":
                 file_content2 = file.read()
 
             # Display the file content
-            st.write(file_content2)         
+            st.write(file_content2)    
 
+        st.write('You’ve read the story, now let’s explore the important words that help tell it.')
+        
+        img = Image.open("chap9")
+    
+        # Specify the desired height
+        desired_height = 250
+        # Calculate the width to maintain the aspect ratio
+        width, height = img.size
+        aspect_ratio = width / height
+        new_width = int(desired_height * aspect_ratio)
+        
+        # Resize the image
+        img = img.resize((new_width, desired_height))
+        
+        # Display the resized image
+        st.image(img, use_column_width=True)         
+
+elif option == "Key Words":
+    img = Image.open("chap1")
+    
+    # Specify the desired height
+    desired_height = 250
+    # Calculate the width to maintain the aspect ratio
+    width, height = img.size
+    aspect_ratio = width / height
+    new_width = int(desired_height * aspect_ratio)
+    
+    # Resize the image
+    img = img.resize((new_width, desired_height))
+    
+    # Display the resized image
+    st.image(img, use_column_width=True)
 
 
 
