@@ -103,10 +103,24 @@ elif option == "Chapter Summary":
                     summarized_text += summarized_chunk + " "
 
                 st.subheader(f'Summary of {title}: \n {summarized_text}')   
-
-                         
             else:
-                st.write("Please upload other file....")        
+                raw_text = extract_text_from_pdf(uploaded_file)
+                title = get_title(raw_text)
+                cleaned_text = preprocess_text(raw_text)
+                cleaned_text = remove_subsequent_occurrences(cleaned_text, title)
+
+                # Separate sections of the text
+                main_content, glossary, think_about_it, talk_about_it, suggested_reading = separate_sections(clean_text)
+                    
+                # Split the text into smaller chunks and summarize each chunk
+                summarized_text = ""
+                for chunk in chunk_text(main_content):
+                    inputs = tokenizer(chunk, max_length=1024, return_tensors="pt", truncation=True)
+                    summary_ids = model.generate(inputs["input_ids"], num_beams=4, min_length=30, max_length=200, length_penalty=2.0)
+                    summarized_chunk = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
+                    summarized_text += summarized_chunk + " "
+
+                st.subheader(f'Summary of {title}: \n {summarized_text}')     
 
         else:
             st.error("Please upload a valid PDF file.")
