@@ -328,10 +328,12 @@
 
 
 import streamlit as st
-from load_model import load_bart_model
+from transformers import BartForConditionalGeneration, BartTokenizer
 
-# Load the model and tokenizer
-model, tokenizer = load_bart_model()
+# Load the BART model and tokenizer
+model_name = "facebook/bart-large-cnn"
+tokenizer = BartTokenizer.from_pretrained(model_name)
+model = BartForConditionalGeneration.from_pretrained(model_name)
 
 # Streamlit UI
 st.title("Text Summarization using BART")
