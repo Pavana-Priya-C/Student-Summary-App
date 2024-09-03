@@ -110,7 +110,7 @@ elif option == "Chapter Summary":
                 cleaned_text = remove_subsequent_occurrences(cleaned_text, title)
 
                 # Separate sections of the text
-                main_content, glossary, think_about_it, talk_about_it, suggested_reading = separate_sections(clean_text)
+                main_content, glossary, think_about_it, talk_about_it, suggested_reading = separate_sections(cleaned_text)
                     
                 # Split the text into smaller chunks and summarize each chunk
                 summarized_text = ""
