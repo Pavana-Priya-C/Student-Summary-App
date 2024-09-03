@@ -8,4 +8,4 @@ def load_bart_model():
 
 if __name__ == "__main__":
     model, tokenizer = load_bart_model()
-    print("BART model and tokenizer loaded and cached successfully.")
+    # print("BART model and tokenizer loaded and cached successfully.")
