@@ -326,14 +326,8 @@
 # st.markdown("***")
 # st.write("© 2024 Future Minds Tutoring. All rights reserved.")  
 
-
 import streamlit as st
 from transformers import BartForConditionalGeneration, BartTokenizer
-
-# Load the BART model and tokenizer
-model_name = "facebook/bart-large-cnn"
-tokenizer = BartTokenizer.from_pretrained(model_name)
-model = BartForConditionalGeneration.from_pretrained(model_name)
 
 # Streamlit UI
 st.title("Text Summarization using BART")
@@ -342,6 +336,16 @@ st.title("Text Summarization using BART")
 uploaded_file = st.file_uploader("Upload a text file", type=["txt"])
 
 if uploaded_file is not None:
+    # Load the BART model and tokenizer only when needed
+    @st.cache_resource
+    def load_bart_model():
+        model_name = "facebook/bart-base"
+        tokenizer = BartTokenizer.from_pretrained(model_name)
+        model = BartForConditionalGeneration.from_pretrained(model_name)
+        return model, tokenizer
+
+    model, tokenizer = load_bart_model()
+    
     # Read the uploaded text file
     text = uploaded_file.read().decode("utf-8")
     
@@ -350,12 +354,13 @@ if uploaded_file is not None:
     st.write(text)
     
     # Tokenize and summarize the text
-    inputs = tokenizer(text, max_length=1024, return_tensors="pt", truncation=True)
-    summary_ids = model.generate(inputs["input_ids"], num_beams=4, min_length=30, max_length=200, length_penalty=2.0)
+    inputs = tokenizer(text, max_length=512, return_tensors="pt", truncation=True)
+    summary_ids = model.generate(inputs["input_ids"], num_beams=2, min_length=30, max_length=150, length_penalty=2.0)
     summary = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
     
     # Display the summarized text
     st.subheader("Summarized Text")
     st.write(summary)
+
 
 
