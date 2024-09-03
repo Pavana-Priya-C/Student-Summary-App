@@ -329,6 +329,22 @@
 import streamlit as st
 from transformers import BartForConditionalGeneration, BartTokenizer
 
+# Load the BART model and tokenizer
+@st.cache_resource
+def load_bart_model():
+    model_name = "facebook/bart-large-cnn"
+    tokenizer = BartTokenizer.from_pretrained(model_name)
+    model = BartForConditionalGeneration.from_pretrained(model_name)
+    return model, tokenizer
+
+model, tokenizer = load_bart_model()
+
+# Function to split text into smaller chunks
+def chunk_text(text, chunk_size=512):
+    words = text.split()
+    for i in range(0, len(words), chunk_size):
+        yield " ".join(words[i:i + chunk_size])
+
 # Streamlit UI
 st.title("Text Summarization using BART")
 
@@ -336,31 +352,24 @@ st.title("Text Summarization using BART")
 uploaded_file = st.file_uploader("Upload a text file", type=["txt"])
 
 if uploaded_file is not None:
-    # Load the BART model and tokenizer only when needed
-    @st.cache_resource
-    def load_bart_model():
-        model_name = "facebook/bart-base"
-        tokenizer = BartTokenizer.from_pretrained(model_name)
-        model = BartForConditionalGeneration.from_pretrained(model_name)
-        return model, tokenizer
-
-    model, tokenizer = load_bart_model()
-    
     # Read the uploaded text file
     text = uploaded_file.read().decode("utf-8")
     
     # Display the original text
     st.subheader("Original Text")
     st.write(text)
-    
-    # Tokenize and summarize the text
-    inputs = tokenizer(text, max_length=512, return_tensors="pt", truncation=True)
-    summary_ids = model.generate(inputs["input_ids"], num_beams=2, min_length=30, max_length=150, length_penalty=2.0)
-    summary = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
-    
+
+    # Split the text into smaller chunks and summarize each chunk
+    summarized_text = ""
+    for chunk in chunk_text(text):
+        inputs = tokenizer(chunk, max_length=1024, return_tensors="pt", truncation=True)
+        summary_ids = model.generate(inputs["input_ids"], num_beams=4, min_length=30, max_length=200, length_penalty=2.0)
+        summarized_chunk = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
+        summarized_text += summarized_chunk + " "
+
     # Display the summarized text
     st.subheader("Summarized Text")
-    st.write(summary)
+    st.write(summarized_text)
 
 
 
