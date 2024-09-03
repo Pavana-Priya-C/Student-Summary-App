@@ -2,7 +2,7 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 import os
 from PIL import Image
-from preprocess import extract_text_from_pdf, preprocess_text_chap8, preprocess_text, get_title, remove_subsequent_occurrences, separate_sections
+from preprocessing import extract_text_from_pdf, preprocess_text_chap8, preprocess_text, get_title, remove_subsequent_occurrences, separate_sections
 from transformers import BartForConditionalGeneration, BartTokenizer
 
 # Load the BART model and tokenizer
