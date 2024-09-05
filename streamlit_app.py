@@ -115,7 +115,7 @@ elif option == "Chapter Summary":
                         text_till_number = match_number.group(1).strip()
                         match_title = re.search(r"(.*?)\n", text_till_number, re.DOTALL)
                         title = re.search(r"\d+\s*\n\n(.*?)\n", text, re.DOTALL)
-                        
+                        st.write('Title from function:', title, text_till_number,match_title)
                         if match_title:
                             return match_title.group(1).strip()  # Extract the first line as the title
                         elif title:
