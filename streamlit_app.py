@@ -1,4 +1,5 @@
 import streamlit as st
+import re
 from streamlit_option_menu import option_menu
 import os
 from PIL import Image
@@ -105,15 +106,33 @@ elif option == "Chapter Summary":
             else:
                 raw_text = extract_text_from_pdf(uploaded_file)
                 # st.write(raw_text)
-                title = get_title(raw_text)
+                def get_title_st(text):
+                    # First, extract text up to the first occurrence of a number, including possible newlines
+                    match_number = re.search(r"^(.*?)(?=\n*\d)", text, re.DOTALL)
+                    
+                    if match_number:
+                        # Extracted text before the number
+                        text_till_number = match_number.group(1).strip()
+                        match_title = re.search(r"(.*?)\n", text_till_number, re.DOTALL)
+                        title = re.search(r"\d+\s*\n\n(.*?)\n", text, re.DOTALL)
+                        
+                        if match_title:
+                            return match_title.group(1).strip()  # Extract the first line as the title
+                        elif title:
+                            return title.group(1).strip()
+                        else:
+                            return text_till_number  # Fallback to text before the number if no match
+                    else:
+                        return None
+                title = get_title_st(raw_text)
                 st.write('title',title)
+
                 cleaned_text = preprocess_text(raw_text)
                 cleaned_text = remove_subsequent_occurrences(cleaned_text, title)
 
 
                 # Separate sections of the text
                 main_content, glossary, think_about_it, talk_about_it, suggested_reading = separate_sections(cleaned_text)
-                st.write(main_content)
                 # Split the text into smaller chunks and summarize each chunk
                 summarized_text = ""
                 # for chunk in chunk_text(main_content):
