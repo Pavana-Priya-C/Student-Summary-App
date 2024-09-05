@@ -104,9 +104,9 @@ elif option == "Chapter Summary":
                 st.subheader(f'Summary of {title}: \n {summarized_text}')   
             else:
                 raw_text = extract_text_from_pdf(uploaded_file)
-                st.write(raw_text)
+                # st.write(raw_text)
                 title = get_title(raw_text)
-                st.write(title)
+                st.write('title',title)
                 cleaned_text = preprocess_text(raw_text)
                 cleaned_text = remove_subsequent_occurrences(cleaned_text, title)
 
