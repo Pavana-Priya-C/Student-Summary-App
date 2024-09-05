@@ -83,10 +83,9 @@ elif option == "Chapter Summary":
             if filename == 'jefp108.pdf':
                 # Extract text from the uploaded PDF file
                 raw_text = extract_text_from_pdf(uploaded_file)
-
+                title = get_title(raw_text)
                 preprocessed_text = preprocess_text_chap8(raw_text)
                 preprocessed_text = preprocess_text(preprocessed_text)
-                title='Bholi'
                 
                  # Remove subsequent occurrences of the title
                 clean_text = remove_subsequent_occurrences(preprocessed_text, title)
