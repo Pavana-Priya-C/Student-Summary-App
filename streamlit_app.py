@@ -105,29 +105,7 @@ elif option == "Chapter Summary":
                 st.subheader(f'Summary of {title}: \n {summarized_text}')   
             else:
                 raw_text = extract_text_from_pdf(uploaded_file)
-                # st.write(raw_text)
-                def get_title_st(text):
-                    # First, extract text up to the first occurrence of a number, including possible newlines
-                    match_number = re.search(r"^(.*?)(?=\n*\d)", text, re.DOTALL)
-                    
-                    if match_number:
-                        # Extracted text before the number
-                        text_till_number = match_number.group(1).strip()
-                        match_title = re.search(r"(.*?)\n", text_till_number, re.DOTALL)
-                        title = re.search(r"\d+\s*\n\n(.*?)\n", text, re.DOTALL)
-                        st.write('Title from function:', title)
-                        st.write('Text till number: ', text_till_number)
-                        st.write('match title: ',match_title)
-                        if title:
-                            return title.group(1).strip()  # Extract the first line as the title
-                        elif match_title:
-                            return match_title.group(1).strip()
-                        else:
-                            return text_till_number  # Fallback to text before the number if no match
-                    else:
-                        return None
-                
-                title = get_title_st(raw_text)
+                title = get_title(raw_text)
                 st.write('title',title)
 
                 cleaned_text = preprocess_text(raw_text)

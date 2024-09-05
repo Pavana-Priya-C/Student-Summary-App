@@ -13,17 +13,22 @@ def get_title(text):
     if match_number:
         # Extracted text before the number
         text_till_number = match_number.group(1).strip()
+        
+        # Extract the first meaningful line from the text before the number
         match_title = re.search(r"(.*?)\n", text_till_number, re.DOTALL)
-        title = re.search(r"\d+\s*\n\n(.*?)\n", text, re.DOTALL)
         
         if match_title:
             return match_title.group(1).strip()  # Extract the first line as the title
-        elif title:
-          return title.group(1).strip()
         else:
-            return text_till_number  # Fallback to text before the number if no match
+            return text_till_number  # Return all text till the number if no line match
+    
     else:
-        return None
+        # If no number is found, apply fallback logic to look for a title pattern
+        title = re.search(r"\d+\s*\n\n(.*?)\n", text, re.DOTALL)
+        if title:
+            return title.group(1).strip()
+        else:
+            return None
 
 #The below function is used only for Chapter 8
 def preprocess_text_chap8(raw_text):
