@@ -8,7 +8,7 @@ def extract_text_from_pdf(pdf_path):
 # Function to get the title
 def get_title(text):
     # First, extract text up to the first occurrence of a number, including possible newlines
-    match_number = re.search(r"^(.*?)(?=\n*\d)", text, re.DOTALL)
+    match_number = re.search(r"^\s*\d+\s*\n+([^\d\n]+)", text, re.DOTALL)
     
     if match_number:
         # Extracted text before the number
