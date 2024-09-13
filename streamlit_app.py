@@ -113,10 +113,12 @@ elif option == "Chapter Summary":
                 
                 elif filename == 'jefp105.pdf':
                     title = get_title_5(raw_text)
+                    st.write(title)
 
                 else:
                     title = get_title(raw_text)    
-                
+                    st.write(title)
+
                 cleaned_text = preprocess_text(raw_text)
                 cleaned_text = remove_subsequent_occurrences(cleaned_text, title)
 
