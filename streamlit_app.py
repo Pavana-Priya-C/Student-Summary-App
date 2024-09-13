@@ -109,15 +109,15 @@ elif option == "Chapter Summary":
 
                 if filename == 'jefp106.pdf' or filename == 'jefp109.pdf':
                     title = get_title6_9(raw_text)
-                    st.write(title)
+                    # st.write(title)
                 
                 elif filename == 'jefp105.pdf':
                     title = get_title_5(raw_text)
-                    st.write(title)
+                    # st.write(title)
 
                 else:
                     title = get_title(raw_text)    
-                    st.write(title)
+                    # st.write(title)
 
                 cleaned_text = preprocess_text(raw_text)
                 cleaned_text = remove_subsequent_occurrences(cleaned_text, title)
@@ -127,11 +127,11 @@ elif option == "Chapter Summary":
                 main_content, glossary, think_about_it, talk_about_it, suggested_reading = separate_sections(cleaned_text)
                 # Split the text into smaller chunks and summarize each chunk
                 summarized_text = ""
-                # for chunk in chunk_text(main_content):
-                #     inputs = tokenizer(chunk, max_length=1024, return_tensors="pt", truncation=True)
-                #     summary_ids = model.generate(inputs["input_ids"], num_beams=4, min_length=30, max_length=200, length_penalty=2.0)
-                #     summarized_chunk = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
-                #     summarized_text += summarized_chunk + " "
+                for chunk in chunk_text(main_content):
+                    inputs = tokenizer(chunk, max_length=1024, return_tensors="pt", truncation=True)
+                    summary_ids = model.generate(inputs["input_ids"], num_beams=4, min_length=30, max_length=200, length_penalty=2.0)
+                    summarized_chunk = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
+                    summarized_text += summarized_chunk + " "
 
                 st.subheader(f'Summary of {title}: \n {summarized_text}')     
 
