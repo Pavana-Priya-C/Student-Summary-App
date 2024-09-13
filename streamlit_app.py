@@ -3,7 +3,7 @@ import re
 from streamlit_option_menu import option_menu
 import os
 from PIL import Image
-from preprocessing import extract_text_from_pdf, preprocess_text_chap8, preprocess_text, get_title, remove_subsequent_occurrences, separate_sections, get_title6_9,get_title_5
+from preprocessing import extract_text_from_pdf, preprocess_text_chap8, preprocess_text, get_title, remove_subsequent_occurrences, separate_sections, get_title6_9, get_title_5
 from transformers import BartForConditionalGeneration, BartTokenizer
 
 # Load the BART model and tokenizer
@@ -109,6 +109,7 @@ elif option == "Chapter Summary":
 
                 if filename == 'jefp106' or filename == 'jefp109':
                     title = get_title6_9(raw_text)
+                    st.write(title)
                 
                 elif filename == 'jefp105':
                     title = get_title_5(raw_text)
@@ -124,11 +125,11 @@ elif option == "Chapter Summary":
                 main_content, glossary, think_about_it, talk_about_it, suggested_reading = separate_sections(cleaned_text)
                 # Split the text into smaller chunks and summarize each chunk
                 summarized_text = ""
-                for chunk in chunk_text(main_content):
-                    inputs = tokenizer(chunk, max_length=1024, return_tensors="pt", truncation=True)
-                    summary_ids = model.generate(inputs["input_ids"], num_beams=4, min_length=30, max_length=200, length_penalty=2.0)
-                    summarized_chunk = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
-                    summarized_text += summarized_chunk + " "
+                # for chunk in chunk_text(main_content):
+                #     inputs = tokenizer(chunk, max_length=1024, return_tensors="pt", truncation=True)
+                #     summary_ids = model.generate(inputs["input_ids"], num_beams=4, min_length=30, max_length=200, length_penalty=2.0)
+                #     summarized_chunk = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
+                #     summarized_text += summarized_chunk + " "
 
                 st.subheader(f'Summary of {title}: \n {summarized_text}')     
 
