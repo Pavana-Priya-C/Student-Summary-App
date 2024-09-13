@@ -3,7 +3,7 @@ import re
 from streamlit_option_menu import option_menu
 import os
 from PIL import Image
-from preprocessing import extract_text_from_pdf, preprocess_text_chap8, preprocess_text, get_title, remove_subsequent_occurrences, separate_sections
+from preprocessing import extract_text_from_pdf, preprocess_text_chap8, preprocess_text, get_title, remove_subsequent_occurrences, separate_sections, get_title6_9,get_title_5
 from transformers import BartForConditionalGeneration, BartTokenizer
 
 # Load the BART model and tokenizer
@@ -104,8 +104,18 @@ elif option == "Chapter Summary":
 
                 st.subheader(f'Summary of {title}: \n {summarized_text}')   
             else:
+                
                 raw_text = extract_text_from_pdf(uploaded_file)
-                title = get_title(raw_text)
+
+                if filename == 'jefp106' or filename == 'jefp109':
+                    title = get_title6_9(raw_text)
+                
+                elif filename == 'jefp105':
+                    title = get_title_5(raw_text)
+
+                else:
+                    title = get_title(raw_text)    
+                
                 cleaned_text = preprocess_text(raw_text)
                 cleaned_text = remove_subsequent_occurrences(cleaned_text, title)
 

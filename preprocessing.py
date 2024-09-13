@@ -9,19 +9,30 @@ def extract_text_from_pdf(pdf_path):
 def get_title(text):
     # First, extract text up to the first occurrence of a number, including possible newlines
     match_number = re.search(r"^\s*\d+\s*\n+([^\d\n]+)", text, re.DOTALL)
-    
+    match_title1 = re.search(r"([^\d\n]+)\n\s*\d+\n", text, re.DOTALL)
+    match_title_till_num = re.search(r"([^\d\n]+)\s*\n*\s*\d+", text, re.DOTALL)
+
     if match_number:
         # Extracted text before the number
         text_till_number = match_number.group(1).strip()
-        
+
         # Extract the first meaningful line from the text before the number
         match_title = re.search(r"(.*?)\n", text_till_number, re.DOTALL)
-        
+
         if match_title:
             return match_title.group(1).strip()  # Extract the first line as the title
         else:
-            return text_till_number  # Return all text till the number if no line match
-    
+            return text_till_number  # Return all text till the number if no line match        
+      
+    elif match_title1:
+        # Extract and return the title, cleaning up any extra spaces or newlines
+        title = match_title1.group(1).strip()
+        return title
+
+    elif match_title_till_num:
+      title = match_title.group(1).strip()
+      return title
+
     else:
         # If no number is found, apply fallback logic to look for a title pattern
         title = re.search(r"\d+\s*\n\n(.*?)\n", text, re.DOTALL)
@@ -29,6 +40,28 @@ def get_title(text):
             return title.group(1).strip()
         else:
             return None
+
+def get_title6_9(text):
+    match_title = re.search(r"([^\d\n]+)\s*\n*\s*\d+", text, re.DOTALL)
+    
+    if match_title:
+        # Extract and return the title, cleaning up any extra spaces or newlines
+        title = match_title.group(1).strip()
+        return title
+    
+    # Fallback if no match is found
+    return None
+
+
+def get_title_5(text):
+    # Search for a pattern where the title appears before the number
+    match_title = re.search(r"([^\d\n]+)\s*\n*\s*\d+", text, re.DOTALL)
+    
+    if match_title:
+        # Extract and return the title, cleaning up any extra spaces or newlines
+        title = match_title.group(1).strip()
+        return title
+    return None
 
 #The below function is used only for Chapter 8
 def preprocess_text_chap8(raw_text):
