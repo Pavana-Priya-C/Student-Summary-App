@@ -107,11 +107,11 @@ elif option == "Chapter Summary":
                 
                 raw_text = extract_text_from_pdf(uploaded_file)
 
-                if filename == 'jefp106' or filename == 'jefp109':
+                if filename == 'jefp106.pdf' or filename == 'jefp109.pdf':
                     title = get_title6_9(raw_text)
                     st.write(title)
                 
-                elif filename == 'jefp105':
+                elif filename == 'jefp105.pdf':
                     title = get_title_5(raw_text)
 
                 else:
