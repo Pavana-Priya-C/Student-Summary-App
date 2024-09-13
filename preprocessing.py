@@ -97,9 +97,18 @@ def preprocess_text(text):
     return processed_text
 
 # Function to remove multiple occurrences of the title
+# def remove_subsequent_occurrences(text, phrase):
+#     parts = text.split(phrase)
+#     return phrase + parts[1] + "".join(parts[2:])
+
 def remove_subsequent_occurrences(text, phrase):
     parts = text.split(phrase)
-    return phrase + parts[1] + "".join(parts[2:])
+    # Check if the phrase exists in the text
+    if len(parts) > 1:
+        return phrase + parts[1] + "".join(parts[2:])
+    else:
+        # If the phrase does not exist, return the original text
+        return text
 
 # Function to get separate sections from the extracted text
 def separate_sections(text):
